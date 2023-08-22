@@ -14,15 +14,20 @@ void World::Create()
 		}
 	}*/
 
-	cubes.push_back(new Cube(CubeType::CAT, -1, 0,0));
+	cubes.push_back(new Cube(CubeType::TEST, -1, 0,0));
 	cubes.push_back(new Cube(CubeType::CAT, 1, 0, 0));
 	cubes.push_back(new Cube(CubeType::CAT, 0, -1, 0));
-	cubes.push_back(new Cube(CubeType::CAT, 0, 1, 0));
+	cubes.push_back(new Cube(CubeType::TEST, 0, 1, 0));
+	light = new Light(4.0,4.0,4.0);
 }
 
 void World::Draw()
 {
+	light->Draw(camera.GetView(),camera.GetProjection());
 	for (int i = 0; i < cubes.size(); i++) {
+		cubes.at(i)->SetLight(light->GetColor());
+		cubes.at(i)->SetCameraPos(camera.GetPos());
+		cubes.at(i)->SetLightPos(light->GetPosition());
 		cubes.at(i)->Draw(camera.GetView(), camera.GetProjection());
 		//cubes.at(i)->Draw(camera.RotateDemo());
 	}

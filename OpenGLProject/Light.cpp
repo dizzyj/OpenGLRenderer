@@ -40,5 +40,16 @@ void Light::Draw(glm::mat4 viewCamera, glm::mat4 projectionCamera)
 	shader->Bind();
 	shader->SetUniformMatrix4fv("u_View", 1, viewCamera);
 	shader->SetUniformMatrix4fv("u_Projection", 1, projectionCamera);
+	shader->SetUniform4f("u_LightColor",lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 	renderer.Draw(*va, *ib, *shader);
+}
+
+glm::vec4 Light::GetColor()
+{
+	return lightColor;
+}
+
+glm::vec3 Light::GetPosition()
+{
+	return lightPos;
 }

@@ -11,7 +11,7 @@
 #include <glm/gtc/type_ptr.hpp>
 enum CubeType
 {
-	GRASS, CAT
+	GRASS, CAT, TEST
 };
 class Cube
 {
@@ -28,17 +28,20 @@ private:
 	//float x,y,z;
 	unsigned int indices[6*6] = {  // note that we start from 0!
 			//tri1		//tri 2
-			3, 0, 1,	1, 2, 3,	// Front x+
-			0, 5, 1,	0, 4, 5,	// right +z
-			4, 6, 5,	4, 7, 6,	// back x-
-			7, 2, 6,	7, 3, 2,	// left-z
-			3, 7, 0,	7, 4, 0,	// fifth square
-			6, 2, 1,	6, 1, 5		// sixth square
+			0, 1, 2,	3, 4, 5,	// Front x+
+			6, 7, 8,	9, 10, 11,	// right +z
+			12, 13, 14,	15, 16, 17,	// back x-
+			18, 19, 20,	21, 22, 23,	// left-z
+			24, 25, 26,	27, 28, 29,	// fifth square
+			30, 31, 32,	33, 34, 35		// sixth square
 	};
 public:
 	
 	Cube(CubeType type, float pos_x, float pos_y, float pos_z);
 	void Draw(glm::mat4 viewCamera, glm::mat4 projectionCamera);
 	void Rotate();
+	void SetLight(glm::vec4 light);
+	void SetLightPos(glm::vec3 pos);
+	void SetCameraPos(glm::vec3 camPos);
 };
 

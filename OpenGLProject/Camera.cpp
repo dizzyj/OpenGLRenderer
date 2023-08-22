@@ -39,25 +39,25 @@ glm::mat4 Camera::GetProjection()
 void Camera::MoveForward(float deltaTime)
 {
 	cameraPos += cameraSpeed * cameraFront * deltaTime;
-	cameraPos.y = 0.0f; // <-- this one-liner keeps the user at the ground level (xz plane)
+	//cameraPos.y = 0.0f; // <-- this one-liner keeps the user at the ground level (xz plane)
 }
 
 void Camera::MoveBackward(float deltaTime)
 {	
 	cameraPos -= cameraSpeed * cameraFront * deltaTime;
-	cameraPos.y = 0.0f; // <-- this one-liner keeps the user at the ground level (xz plane)
+	//cameraPos.y = 0.0f; // <-- this one-liner keeps the user at the ground level (xz plane)
 }
 
 void Camera::MoveLeft(float deltaTime)
 {
 	cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed * deltaTime;
-	cameraPos.y = 0.0f; // <-- this one-liner keeps the user at the ground level (xz plane)
+	//cameraPos.y = 0.0f; // <-- this one-liner keeps the user at the ground level (xz plane)
 }
 
 void Camera::MoveRight(float deltaTime)
 {
 	cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed * deltaTime;
-	cameraPos.y = 0.0f; // <-- this one-liner keeps the user at the ground level (xz plane)
+	//cameraPos.y = 0.0f; // <-- this one-liner keeps the user at the ground level (xz plane)
 }
 
 void Camera::Update(float pitch, float yaw, float fov)
@@ -66,4 +66,9 @@ void Camera::Update(float pitch, float yaw, float fov)
 	m_yaw = yaw;
 	m_fov = fov;
 
+}
+
+glm::vec3 Camera::GetPos()
+{
+	return cameraPos;
 }

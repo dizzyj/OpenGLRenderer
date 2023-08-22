@@ -2,21 +2,54 @@
 #include <iostream>
 Cube::Cube(CubeType type, float x, float y, float z): type(type)
 {
-	float vertices[3 * 8] = {
+	float vertices[] = {
 		//PositionCoords	//textureCoords
-		 0.5f,  0.5f, 0.5f, // top right
-		 0.5f, -0.5f, 0.5f,	// bottom right
-		-0.5f, -0.5f, 0.5f, // bottom left
-		-0.5f,  0.5f, 0.5f, // top left 
+		 0.5f,  0.5f, 0.5f,		0.0f,  0.0f, 1.0f,// top right
+		 0.5f, -0.5f, 0.5f,		0.0f,  0.0f, 1.0f,// bottom right
+		-0.5f, -0.5f, 0.5f,		0.0f,  0.0f, 1.0f,// bottom left
+		-0.5f, -0.5f, 0.5f,		0.0f,  0.0f, 1.0f,// bottom left
+		-0.5f,  0.5f, 0.5f,		0.0f,  0.0f, 1.0f,// top left 
+		0.5f,  0.5f, 0.5f,		0.0f,  0.0f, 1.0f,// top right
 
-		 0.5f,  0.5f, -0.5f,	// top right back
-		 0.5f, -0.5f, -0.5f,	// bottom right back
-		-0.5f, -0.5f, -0.5f, // bottom left back
-		-0.5f,  0.5f, -0.5f, // top left back
+		 0.5f,  0.5f, -0.5f,	0.0f,  0.0f, -1.0f,	// top right back
+		 0.5f, -0.5f, -0.5f,	0.0f,  0.0f, -1.0f,	// bottom right back
+		-0.5f, -0.5f, -0.5f,	0.0f,  0.0f, -1.0f,// bottom left back
+		-0.5f, -0.5f, -0.5f,	0.0f,  0.0f, -1.0f,// bottom left back
+		-0.5f,  0.5f, -0.5f,	0.0f,  0.0f, -1.0f,// top left back
+		 0.5f,  0.5f, -0.5f,	0.0f,  0.0f, -1.0f,// top right back
+
+		 -0.5f,  0.5f, 0.5f,	-1.0f,  0.0f,  0.0f,// top left 
+		 -0.5f, -0.5f, 0.5f,	-1.0f,  0.0f,  0.0f,// bottom left
+		 -0.5f, -0.5f, -0.5f,	-1.0f,  0.0f,  0.0f,// bottom left back
+		 -0.5f, -0.5f, -0.5f,	-1.0f,  0.0f,  0.0f,// bottom left back
+		 -0.5f,  0.5f, -0.5f,	-1.0f,  0.0f,  0.0f,// top left back
+		 -0.5f,  0.5f, 0.5f,	-1.0f,  0.0f,  0.0f,// top left 
+
+		 0.5f,  0.5f, 0.5f,		1.0f,  0.0f,  0.0f,// top left 
+		 0.5f, -0.5f, 0.5f,		1.0f,  0.0f,  0.0f,// bottom left
+		 0.5f, -0.5f, -0.5f,	1.0f,  0.0f,  0.0f,// bottom left back
+		 0.5f, -0.5f, -0.5f,	1.0f,  0.0f,  0.0f,// bottom left back
+		 0.5f,  0.5f, -0.5f,	1.0f,  0.0f,  0.0f,// top left back
+		 0.5f,  0.5f, 0.5f,		1.0f,  0.0f,  0.0f,// top left 
+
+		 0.5f,  0.5f, -0.5f,	0.0f, 1.0f,  0.0f,// top right back
+		 0.5f,  0.5f, 0.5f,		0.0f, 1.0f,  0.0f,// top right
+		 -0.5f,  0.5f, 0.5f,	0.0f, 1.0f,  0.0f,// top left 
+		 -0.5f,  0.5f, 0.5f,	0.0f, 1.0f,  0.0f,// top left 
+		 -0.5f,  0.5f, -0.5f,	0.0f, 1.0f,  0.0f,// top left back
+		 0.5f,  0.5f, -0.5f,	0.0f, 1.0f,  0.0f,// top right back
+
+		  0.5f,  -0.5f, -0.5f,	0.0f,  -1.0f,  0.0f,	// top right back
+		 0.5f,  -0.5f, 0.5f,	0.0f,  -1.0f,  0.0f,// top right
+		 -0.5f,  -0.5f, 0.5f,	0.0f,  -1.0f,  0.0f, // top left 
+		 -0.5f,  -0.5f, 0.5f,	0.0f,  -1.0f,  0.0f, // top left 
+		 -0.5f,  -0.5f, -0.5f,	0.0f,  -1.0f,  0.0f, // top left back
+		 0.5f,  -0.5f, -0.5f,	0.0f,  -1.0f,  0.0f,	// top right back
 	};
 	
 	layout = new VertexBufferLayout;
-	vb = new VertexBuffer(vertices, 8 * 3 * sizeof(float));
+	vb = new VertexBuffer(vertices, 6 * 6 * 6 * sizeof(float));
+	layout->Push<float>(3);
 	layout->Push<float>(3);
 	va = new VertexArray();
 	va->AddBuffer(*vb, *layout);
@@ -35,6 +68,14 @@ Cube::Cube(CubeType type, float x, float y, float z): type(type)
 		paths.push_back(".\\res\\textures\\cat4.png");
 		paths.push_back(".\\res\\textures\\cat5.png");
 		paths.push_back(".\\res\\textures\\cat6.png");
+		break;
+	case CubeType::TEST:
+		paths.push_back(".\\res\\textures\\+x.png");
+		paths.push_back(".\\res\\textures\\-x.png");
+		paths.push_back(".\\res\\textures\\+y.png");
+		paths.push_back(".\\res\\textures\\-y.png");
+		paths.push_back(".\\res\\textures\\+z.png");
+		paths.push_back(".\\res\\textures\\-z.png");
 		break;
 	}
 	texture = new Texture_Cube(paths);
@@ -61,4 +102,25 @@ void Cube::Rotate()
 	shader->Bind();
 	transform = glm::rotate(transform, glm::radians(0.5f), glm::vec3(0.3, 0.5, 1.0));
 	shader->SetUniformMatrix4fv("u_Model", 1, transform);
+}
+
+void Cube::SetLight(glm::vec4 light)
+{
+	shader->Bind();
+	shader->SetUniform4f("u_LightColor", light.x, light.y, light.z, light.w);
+	shader->UnBind();
+}
+
+void Cube::SetLightPos(glm::vec3 pos)
+{
+	shader->Bind();
+	shader->SetUniform3f("u_LightPos", pos.x, pos.y, pos.z);
+	shader->UnBind();
+}
+
+void Cube::SetCameraPos(glm::vec3 camPos)
+{
+	shader->Bind();
+	shader->SetUniform3f("u_ViewPos", camPos.x, camPos.y, camPos.z);
+	shader->UnBind();
 }

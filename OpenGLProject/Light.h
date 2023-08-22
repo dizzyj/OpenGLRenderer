@@ -18,6 +18,7 @@ class Light
 	Renderer renderer;
 	Shader* shader;
 	float x, y, z;
+	glm::vec4 lightColor{1.0, 1.0, 1.0, 1.0};
 	glm::vec3 lightPos{ 1.2f, 1.0f, 2.0f };
 	unsigned int indices[6 * 6] = {  // note that we start from 0!
 			//tri1		//tri 2
@@ -32,5 +33,7 @@ public:
 
 	Light(float x, float y, float z);
 	void Draw(glm::mat4 viewCamera, glm::mat4 projectionCamera);
+	glm::vec4 GetColor();
+	glm::vec3 GetPosition();
 };
 

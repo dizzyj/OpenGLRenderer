@@ -26,5 +26,6 @@ public:
 	void MoveLeft(float deltaTime);
 	void MoveRight(float deltaTime);
 	void Update(float pitch, float yaw, float fov);
+	glm::vec3 GetPos();
 };
 

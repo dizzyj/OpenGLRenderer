@@ -55,8 +55,8 @@ int main() {
 		GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 		GLCall(glEnable(GL_BLEND));
 		glEnable(GL_DEPTH_TEST);
-		//glFrontFace(GL_CW);
-		//glDepthFunc(GL_GREATER);
+		glFrontFace(GL_CW);
+		glDepthFunc(GL_LESS);
 		float r = 0.0f;
 		float increment = 0.05f;
 		
