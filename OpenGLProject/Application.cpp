@@ -54,6 +54,7 @@ int main() {
 	{
 		GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 		GLCall(glEnable(GL_BLEND));
+		glEnable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);
 		glFrontFace(GL_CW);
 		glDepthFunc(GL_LESS);
@@ -69,6 +70,7 @@ int main() {
 			// input
 			processInput(window, world, deltaTime);
 			renderer.Clear();
+			world.GetLight()->UpdatePosition(1.0f + sin(glfwGetTime()) * 2.0f, sin(glfwGetTime() / 2.0f) * 1.0f, 1.0f + cos(glfwGetTime()) * 2.0f);
 			world.Camera()->Update(pitch,yaw,fov);
 			world.Draw();
 			//check and call events and swap the buffers

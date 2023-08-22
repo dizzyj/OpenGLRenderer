@@ -12,25 +12,25 @@ Cube::Cube(CubeType type, float x, float y, float z): type(type)
 		0.5f,  0.5f, 0.5f,		0.0f,  0.0f, 1.0f,// top right
 
 		 0.5f,  0.5f, -0.5f,	0.0f,  0.0f, -1.0f,	// top right back
+		-0.5f, -0.5f, -0.5f,	0.0f,  0.0f, -1.0f,// bottom left back
 		 0.5f, -0.5f, -0.5f,	0.0f,  0.0f, -1.0f,	// bottom right back
 		-0.5f, -0.5f, -0.5f,	0.0f,  0.0f, -1.0f,// bottom left back
-		-0.5f, -0.5f, -0.5f,	0.0f,  0.0f, -1.0f,// bottom left back
-		-0.5f,  0.5f, -0.5f,	0.0f,  0.0f, -1.0f,// top left back
 		 0.5f,  0.5f, -0.5f,	0.0f,  0.0f, -1.0f,// top right back
-
+		-0.5f,  0.5f, -0.5f,	0.0f,  0.0f, -1.0f,// top left back
+		 //left
 		 -0.5f,  0.5f, 0.5f,	-1.0f,  0.0f,  0.0f,// top left 
 		 -0.5f, -0.5f, 0.5f,	-1.0f,  0.0f,  0.0f,// bottom left
 		 -0.5f, -0.5f, -0.5f,	-1.0f,  0.0f,  0.0f,// bottom left back
 		 -0.5f, -0.5f, -0.5f,	-1.0f,  0.0f,  0.0f,// bottom left back
 		 -0.5f,  0.5f, -0.5f,	-1.0f,  0.0f,  0.0f,// top left back
 		 -0.5f,  0.5f, 0.5f,	-1.0f,  0.0f,  0.0f,// top left 
-
+		 //right
 		 0.5f,  0.5f, 0.5f,		1.0f,  0.0f,  0.0f,// top left 
+		 0.5f, -0.5f, -0.5f,	1.0f,  0.0f,  0.0f,// bottom left back
 		 0.5f, -0.5f, 0.5f,		1.0f,  0.0f,  0.0f,// bottom left
 		 0.5f, -0.5f, -0.5f,	1.0f,  0.0f,  0.0f,// bottom left back
-		 0.5f, -0.5f, -0.5f,	1.0f,  0.0f,  0.0f,// bottom left back
-		 0.5f,  0.5f, -0.5f,	1.0f,  0.0f,  0.0f,// top left back
 		 0.5f,  0.5f, 0.5f,		1.0f,  0.0f,  0.0f,// top left 
+		 0.5f,  0.5f, -0.5f,	1.0f,  0.0f,  0.0f,// top left back
 
 		 0.5f,  0.5f, -0.5f,	0.0f, 1.0f,  0.0f,// top right back
 		 0.5f,  0.5f, 0.5f,		0.0f, 1.0f,  0.0f,// top right
@@ -40,11 +40,11 @@ Cube::Cube(CubeType type, float x, float y, float z): type(type)
 		 0.5f,  0.5f, -0.5f,	0.0f, 1.0f,  0.0f,// top right back
 
 		  0.5f,  -0.5f, -0.5f,	0.0f,  -1.0f,  0.0f,	// top right back
+		 -0.5f,  -0.5f, 0.5f,	0.0f,  -1.0f,  0.0f, // top left 
 		 0.5f,  -0.5f, 0.5f,	0.0f,  -1.0f,  0.0f,// top right
 		 -0.5f,  -0.5f, 0.5f,	0.0f,  -1.0f,  0.0f, // top left 
-		 -0.5f,  -0.5f, 0.5f,	0.0f,  -1.0f,  0.0f, // top left 
-		 -0.5f,  -0.5f, -0.5f,	0.0f,  -1.0f,  0.0f, // top left back
 		 0.5f,  -0.5f, -0.5f,	0.0f,  -1.0f,  0.0f,	// top right back
+		 -0.5f,  -0.5f, -0.5f,	0.0f,  -1.0f,  0.0f, // top left back
 	};
 	
 	layout = new VertexBufferLayout;

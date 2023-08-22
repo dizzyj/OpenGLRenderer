@@ -53,3 +53,15 @@ glm::vec3 Light::GetPosition()
 {
 	return lightPos;
 }
+
+void Light::UpdatePosition(float x, float y, float z)
+{
+	lightPos = glm::vec3(x, y, z);
+	shader->Bind();
+	//Uniforms
+	transform = glm::mat4(1.0f);
+	transform = glm::translate(transform, lightPos);
+	transform = glm::scale(transform, glm::vec3(0.2f));
+	shader->SetUniformMatrix4fv("u_Model", 1, transform);
+	shader->UnBind();
+}

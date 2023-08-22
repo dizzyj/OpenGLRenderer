@@ -18,7 +18,7 @@ void World::Create()
 	cubes.push_back(new Cube(CubeType::CAT, 1, 0, 0));
 	cubes.push_back(new Cube(CubeType::CAT, 0, -1, 0));
 	cubes.push_back(new Cube(CubeType::TEST, 0, 1, 0));
-	light = new Light(4.0,4.0,4.0);
+	light = new Light(4.0, 4.0, 4.0);
 }
 
 void World::Draw()

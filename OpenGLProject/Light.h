@@ -35,5 +35,6 @@ public:
 	void Draw(glm::mat4 viewCamera, glm::mat4 projectionCamera);
 	glm::vec4 GetColor();
 	glm::vec3 GetPosition();
+	void UpdatePosition(float x, float y, float z);
 };
 

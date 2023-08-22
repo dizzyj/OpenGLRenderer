@@ -17,6 +17,7 @@ public:
 	void Create();
 	void Draw();
 	inline Camera* Camera() { return &camera; }
+	inline Light* GetLight() { return light; }
 
 };
 
