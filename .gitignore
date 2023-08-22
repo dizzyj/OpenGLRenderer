@@ -1,0 +1,6 @@
+
+#ignore x64
+x64/
+
+#ignore .vs
+.vs/
